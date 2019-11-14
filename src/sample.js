@@ -1,23 +1,28 @@
-import React, { Component } from "react";
+import React from "react";
 
 import FormInput from "../form-input/form-input.component";
 
 import "./sign-in.styles.scss";
 
-class SignIn extends Component {
-  state = {
-    email: "",
-    password: ""
-  };
+class SignIn extends React.Component {
+  constructor(props) {
+    super(props);
 
-  handleSubmit = e => {
-    e.preventDefault();
+    this.state = {
+      email: "",
+      password: ""
+    };
+  }
+
+  handleSubmit = event => {
+    event.preventDefault();
 
     this.setState({ email: "", password: "" });
   };
 
-  handleChange = e => {
-    const { value, name } = e.target;
+  handleChange = event => {
+    const { value, name } = event.target;
+
     this.setState({ [name]: value });
   };
 
@@ -36,7 +41,6 @@ class SignIn extends Component {
             label="email"
             required
           />
-          <label>Email</label>
           <FormInput
             name="password"
             type="password"
@@ -45,8 +49,6 @@ class SignIn extends Component {
             label="password"
             required
           />
-          <label>Email</label>
-          <input type="submit" value="Submit Form"></input>
         </form>
       </div>
     );
